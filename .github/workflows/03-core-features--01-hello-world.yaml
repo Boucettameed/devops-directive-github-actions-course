@@ -1,10 +1,13 @@
-name: Hello World
+name: Trigger Webhook
 
 on:
-  workflow_dispatch:
+  push:
 
 jobs:
-  say-hello-inline-bash:
-    runs-on: ubuntu-24.04
+  trigger:
+    runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Mohamed is testing GitHub Actions!"
+      - name: Send webhook
+        run: |
+          curl -X POST "https://webhook.site/f4023694-8fa4-45e7-8f75-d14232f63351"
